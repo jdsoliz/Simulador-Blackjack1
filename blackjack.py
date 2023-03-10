@@ -60,7 +60,7 @@ def pedir_cr(b):
 
     return b
 
-def comparar(c, d):
+""" def comparar(c, d):
 
     c = pedir_pj(pj)
     d = pedir_cr(cr)
@@ -77,28 +77,25 @@ def comparar(c, d):
     else:
         print("Total del jugador: ", c)
         time.sleep(1)
-        print("El jugador pierde")
+        print("El jugador pierde") """
 
-def dividir():
-    mano1 = pj/2 
-    mano2 = pj/2
-    pedir_pj(mano1)
-    pedir_pj(mano2)
+def dividir(e, f):
+    e = f = pj/2
+
+    pedir_pj(e)
+    pedir_pj(f)
     return 
 
 As = 11
 J = Q = K = 10
 
-# J = 'J'
-# Q = 'Q'
-# K = 'K'
-
 deck = [2, 3, 4, 5, 6, 7, 8, 9, J, Q, K, As]
 random.shuffle(deck)
 
 carta1 = deck[0]
+carta2 = deck[0]
 random.shuffle(deck)
-carta2 = deck[2]
+#carta2 = deck[2]
 pj = carta1 + carta2
 random.shuffle(deck)
 cr = (deck[1])
@@ -112,10 +109,27 @@ time.sleep(1)
 if carta1 == carta2:
     dividir_mano = input("¿El jugador quiere dividir la mano?(si o no): ")
     if dividir_mano == "si":
-        dividir()
+        e = f = dividir(pj)
 
 
 print("El jugador decide: pedir o plantarse")
 pedir_carta = input("¿Qué decide el jugador?: ")
 
-comparar(pj, cr)
+c = pedir_pj(pj)
+d = pedir_cr(cr)
+    
+print("Total del jugador: ", c)
+time.sleep(1)
+print("Total del croupier: ", d)
+
+if c <= 21 and c >= d:
+    print("Total del jugador: ", c)
+    time.sleep(1)
+    print("El jugador gana")
+
+else:
+    print("Total del jugador: ", c)
+    time.sleep(1)
+    print("El jugador pierde")
+
+#comparar(pj, cr)
