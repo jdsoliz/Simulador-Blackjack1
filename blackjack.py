@@ -82,6 +82,8 @@ def comparar(c, d):
 def dividir():
     mano1 = pj/2 
     mano2 = pj/2
+    pedir_pj(mano1)
+    pedir_pj(mano2)
     return 
 
 As = 11
