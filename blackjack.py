@@ -1,6 +1,7 @@
 import random
-#import sys
 import time
+import sys
+
 # <>
 def mas_cartas():
     global mano_jugador
@@ -10,18 +11,21 @@ def mas_cartas():
     print('El jugador recibe:',deck[0], 'de', pack[0])
     print("Total de la mano del jugador: ",mano_jugador)
 
-    if mano_jugador > 21:
-       random.shuffle(deck)
-       random.shuffle(pack)
-       print("El jugador ha sobrepasado 21")
-       print("El jugador pierde")
-    elif mano_jugador <= 21:
+    while mano_jugador <= 21:
+        random.shuffle(deck)
+        random.shuffle(pack)
         pedir_carta = input("¿El jugador quiere otra carta? si/no: ")
         if pedir_carta == "si":
+            time.sleep(1)
             mano_jugador += deck[1]
-        print('El jugador recibe:',deck[1], 'de', pack[0])
-        print("Total de la mano del jugador: ",mano_jugador)
-    return
+            print('El jugador recibe:',deck[1], 'de', pack[0])
+            print("Total de la mano del jugador: ",mano_jugador)
+        elif mano_jugador > 21: 
+            print("El jugador ha sobrepasado 21")
+            print("El jugador pierde")
+            sys.exit()
+        else:
+            return
 
 def mas_croupier():
     global mano_croupier
@@ -43,7 +47,7 @@ def mas_croupier():
     if mano_croupier > 21:
         time.sleep(1)
         print("El croupier ha sobrepasado 21, el jugador gana")
-        exit
+        sys.exit()
     return
 
 def comparar():
